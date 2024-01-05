@@ -1,0 +1,57 @@
+[{
+  "id": 1,
+  "type": 0,
+  "title": "Sensor 1",
+  "subtitle": "Camera 1",
+  "connStrength": 0
+},
+{
+  "id": 2,
+  "type": 0,
+  "title": "Sensor 2",
+  "subtitle": "Camera 2",
+  "connStrength": 1
+},
+{
+  "id": 3,
+  "type": 1,
+  "title": "Sensor 3",
+  "subtitle": "Camera 3",
+  "connStrength": 0
+},
+{
+  "id": 4,
+  "type": 1,
+  "title": "Sensor 4",
+  "subtitle": "Camera 4",
+  "connStrength": 2
+},
+{
+  "id": 5,
+  "type": 3,
+  "title": "Sensor 5",
+  "subtitle": "Camera 5",
+  "connStrength": 0
+},
+{
+  "id": 6,
+  "type": 3,
+  "title": "Sensor 6",
+  "subtitle": "Camera 6",
+  "connStrength": 1
+},
+{
+  "id": 7,
+  "type": 4,
+  "title": "Sensor 7",
+  "subtitle": "Camera 7",
+  "connStrength": 0
+},
+{
+  "id": 8,
+  "type": 4,
+  "title": "Sensor 8",
+  "subtitle": "Camera 8",
+  "connStrength": 1
+}
+]

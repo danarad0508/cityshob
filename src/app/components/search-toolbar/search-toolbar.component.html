@@ -1,0 +1,19 @@
+
+<form [formGroup]="searchGeoObjectsFG">
+  <p>
+      <select formControlName="geoObjType">
+        <option value="0">Site</option>
+        <option value="1">Zone</option>
+        <option value="3">Layer</option>
+        <option value="4">Placemark</option>
+      </select>
+      <input type="text" formControlName="searchText"/>
+      <button (click)="searchGeoObjects()">Search</button>
+  </p>
+  <div *ngFor="let geoObject of searchResults">
+      <span>Geo Object Type:{{ "GEO_OBJECTS.TYPE_" + geoObject.type | translate }}</span>
+  </div>
+  <p>
+    {{ searchResults | json }}
+  </p>
+</form>
