@@ -24,7 +24,7 @@ app.listen(port, () => {
 
 function filterGeoObjects(type: string, searchText: string): any[] {
   return geoObjects ?
-    geoObjects.filter((geoObj: any) => geoObj.type === parseInt(type) && geoObj.name.toString().toLowerCase().indexOf(searchText) > -1) :
+    geoObjects.filter((geoObj: any) => geoObj.type === parseInt(type) && geoObj.name.toString().toLowerCase().indexOf(searchText.toLowerCase()) > -1) :
     [];
 }
 /*

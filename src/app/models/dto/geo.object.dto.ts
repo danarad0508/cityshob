@@ -4,6 +4,7 @@ import { GeoObjectTypeEnum } from "../../enums/geo.object.type.enum";
 export interface GeoObjectDto {
   id: number;
   type: GeoObjectTypeEnum;
+  typeId: number;
   name: string; //i.e. Sensor 1
   info: string; //i.e. Camera 1 - ideally this should be an identifier as Camera 1 maybe is used by other sensors, but for the simplicity
                 //of this exercise I'm referring to is as additional info for object.

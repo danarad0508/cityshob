@@ -1,19 +1,50 @@
-
 <form [formGroup]="searchGeoObjectsFG">
-  <p>
-      <select formControlName="geoObjType">
-        <option value="0">Site</option>
-        <option value="1">Zone</option>
-        <option value="3">Layer</option>
-        <option value="4">Placemark</option>
-      </select>
-      <input type="text" formControlName="searchText"/>
-      <button (click)="searchGeoObjects()">Search</button>
-  </p>
-  <div *ngFor="let geoObject of searchResults">
-      <span>Geo Object Type:{{ "GEO_OBJECTS.TYPE_" + geoObject.type | translate }}</span>
+  <div class="card flex flex-wrap gap-5 w-full">
+    <h2 class="w-full">Search Geo Objects</h2>
+    <div class="flex flex-wrap justify-content-left gap-3 w-full">
+      <span>
+        <p-dropdown [options]="geoObjectTypes" formControlName="geoObjType" placeholder="Select Type"
+          (onChange)="search(searchText.value)">
+        </p-dropdown>
+      </span>
+      <span class="p-input-icon-right">
+        <input type="text" pInputText formControlName="searchText" (keyup)="search(getValue($event))" />
+        <i class="pi pi-search"></i>
+      </span>
+    </div>
+    <div class="flex w-full">
+      <p-accordion [activeIndex]="activeIndex" class="w-full">
+        <p-accordionTab *ngFor="let geoObjectGroup of geoObjectsGroups$ | async">
+          <ng-template pTemplate="header">
+            <span class="flex align-items-left gap-2 w-full">
+              {{ ("GEO_OBJECTS.PLURAL_TYPE_" + geoObjectGroup.getObjectType | translate) }}
+            </span>
+          </ng-template>
+          <p class="m-0">
+            <p-accordion [activeIndex]="0">
+              <p-accordionTab *ngFor="let subGroup of geoObjectGroup.subGroups; let i = index">
+                <ng-template pTemplate="header">
+                  <span class="flex align-items-left gap-2 w-full">
+                    {{ ("GEO_OBJECTS.TYPE_" + geoObjectGroup.getObjectType | translate) + " " + (subGroup.geoObjectTypeId) }}
+                  </span>
+                </ng-template>
+                <p class="m-1">
+                  <p-listbox [options]="subGroup.geoObjects" optionLabel="name">
+                    <ng-template let-geoObject pTemplate="item">
+                      <div class="flex align-items-left gap-2">
+                          <div class="flex flex-column">
+                            <span class="title">{{ geoObject.name1 }}</span>
+                            <span class="subtitle">{{ geoObject.name2 }}</span>
+                          </div>
+                      </div>
+                  </ng-template>
+                  </p-listbox>
+                </p>
+              </p-accordionTab>
+            </p-accordion>
+          </p>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
   </div>
-  <p>
-    {{ searchResults | json }}
-  </p>
 </form>
